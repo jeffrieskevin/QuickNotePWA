@@ -52,11 +52,21 @@ body {
   background-color: #34495e;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
 .project-list li:hover {
   background-color: #3d566e;
+  transform: translateX(5px);
+}
+
+.project-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 /* Main Content Styling */
@@ -66,6 +76,50 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.user-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-settings label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #34495e;
+}
+
+#username-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+}
+
+#username-input:focus {
+  border-color: #2980b9;
+}
+
+#save-username-btn {
+  background-color: #2980b9; /* Blue Background */
+  color: #ffffff; /* White Text */
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#save-username-btn:hover {
+  background-color: #1f6391;
 }
 
 .welcome {
@@ -102,9 +156,29 @@ body {
   margin-bottom: 15px;
   outline: none;
   transition: border-color 0.3s ease;
+  background-color: #ffffff; /* White Background */
+  color: #333333; /* Dark Text */
 }
 
 #new-note:focus {
+  border-color: #2980b9; /* Blue Border on Focus */
+}
+
+.project-dropdown {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 15px;
+  background-color: #ffffff; /* White Background */
+  color: #333333; /* Dark Text */
+  transition: border-color 0.3s ease;
+}
+
+.project-dropdown:focus {
   border-color: #2980b9; /* Blue Border on Focus */
 }
 
@@ -116,20 +190,38 @@ body {
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #add-note-btn:hover {
   background-color: #1f6391; /* Darker Blue on Hover */
+  transform: scale(1.05);
 }
 
-/* Notes Container Styling */
 .notes-container {
   width: 100%;
   max-width: 600px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #2980b9 #ecf0f1;
+}
+
+.notes-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notes-container::-webkit-scrollbar-track {
+  background: #ecf0f1;
+  border-radius: 4px;
+}
+
+.notes-container::-webkit-scrollbar-thumb {
+  background-color: #2980b9;
+  border-radius: 4px;
 }
 
 .note {
@@ -139,6 +231,24 @@ body {
   border-radius: 8px;
   margin-bottom: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-left: 5px solid #e74c3c; /* Default Red for 'Others' */
+}
+
+.note[data-project="Books"] {
+  border-left: 5px solid #2980b9; /* Blue */
+}
+
+.note[data-project="Podcasts"] {
+  border-left: 5px solid #27ae60; /* Green */
+}
+
+.note[data-project="Ideas"] {
+  border-left: 5px solid #f1c40f; /* Yellow */
+}
+
+.note[data-project="Others"] {
+  border-left: 5px solid #e74c3c; /* Red */
 }
 
 .note p {
@@ -150,3 +260,73 @@ body {
   font-size: 0.8rem;
   color: #7f8c8d; /* Grey Text */
 }
+
+/* Delete Button Styling */
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
+
+.note:hover .delete-btn {
+  display: block; /* Show on hover */
+}
+
+/* Add smooth transitions and hover effects */
+.project-list li {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#add-note-btn {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#add-note-btn:hover {
+  background-color: #1f6391;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #34495e;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  #new-note, .project-dropdown, #add-note-btn {
+    max-width: 100%;
+  }
+
+  .notes-container {
+    max-height: 50vh;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.project-list li:focus {
+  background-color: #3d566e;
+  outline: 2px solid #2980b9;
+}
+
+#add-note-btn:focus, .delete-btn:focus {
+  outline: 2px solid #2980b9;
+}
+
