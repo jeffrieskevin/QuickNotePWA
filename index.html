@@ -13,23 +13,46 @@
     <aside class="sidebar">
       <h2>Projects</h2>
       <ul class="project-list">
-        <li data-project="Books">Books</li>
-        <li data-project="Podcasts">Podcasts</li>
-        <li data-project="Ideas">Ideas</li>
-        <li data-project="Others">Others</li>
+        <li data-project="All"><img src="assets/icons/all.png" alt="All Projects" class="project-icon"> All</li>
+        <li data-project="Books"><img src="assets/icons/books.png" alt="Books" class="project-icon"> Books</li>
+        <li data-project="Podcasts"><img src="assets/icons/podcasts.png" alt="Podcasts" class="project-icon"> Podcasts</li>
+        <li data-project="Ideas"><img src="assets/icons/ideas.png" alt="Ideas" class="project-icon"> Ideas</li>
+        <li data-project="Others"><img src="assets/icons/others.png" alt="Others" class="project-icon"> Others</li>
       </ul>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
+      <!-- User Settings -->
+      <div class="user-settings">
+        <label for="username-input">Enter your name:</label>
+        <input type="text" id="username-input" placeholder="Your name">
+        <button id="save-username-btn">Save</button>
+      </div>
+
+      <!-- Welcome Message -->
       <div class="welcome">
         <h1>Hi, <span id="username">User</span>!</h1>
         <p>Welcome back! Ready to take some notes?</p>
       </div>
+
+      <!-- Note Prompt -->
       <div class="note-prompt">
         <textarea id="new-note" placeholder="Write a new note here..." rows="4"></textarea>
+        
+        <!-- Project Selection Dropdown -->
+        <select id="note-project" class="project-dropdown">
+          <option value="" disabled selected>Select Project</option>
+          <option value="Books">Books</option>
+          <option value="Podcasts">Podcasts</option>
+          <option value="Ideas">Ideas</option>
+          <option value="Others">Others</option>
+        </select>
+
         <button id="add-note-btn">Add Note</button>
       </div>
+
+      <!-- Notes Container -->
       <div id="notes-container" class="notes-container"></div>
     </main>
   </div>
@@ -37,5 +60,6 @@
   <script src="app.js"></script>
 </body>
 </html>
+
 
 
