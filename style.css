@@ -1,32 +1,123 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-  
-  .container {
-    margin: 20px auto;
-    max-width: 600px;
-    padding: 20px;
-    background: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  
-  #notes-container {
-    margin: 20px 0;
-    text-align: left;
-  }
-  
-  button {
-    background-color: #3f51b5;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #2c2c2e; /* Dark Grey Background */
+  color: #ffffff; /* White Text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  height: 90vh;
+  background-color: #1e1e1e; /* Slightly Darker for the Container */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: #3a3a3c; /* Darker Grey for Sidebar */
+  padding: 20px;
+  border-right: 2px solid #444;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-list {
+  list-style: none;
+}
+
+.project-list li {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.project-list li:hover {
+  color: #a8e6cf; /* Light accent color on hover */
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.welcome h1 {
+  font-size: 2.5rem;
+  color: #a8e6cf; /* Soft Accent Color */
+}
+
+.welcome p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.note-prompt {
+  margin-bottom: 2rem;
+}
+
+#new-note {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a4a4c; /* Dark Input Background */
+  color: #ffffff; /* White Text */
+  outline: none;
+  margin-bottom: 10px;
+}
+
+#add-note-btn {
+  background-color: #a8e6cf; /* Light Accent */
+  color: #1e1e1e;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#add-note-btn:hover {
+  background-color: #88d8b0; /* Slightly Darker Accent */
+}
+
+/* Notes Container */
+.notes-container {
+  margin-top: 20px;
+}
+
+.note {
+  background-color: #4a4a4c;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  color: #e6e6e6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.note small {
+  display: block;
+  margin-top: 10px;
+  color: #cfcfcf;
+}
