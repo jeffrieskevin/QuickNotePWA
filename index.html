@@ -5,15 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
-  <title>QuickNote</title>
+  <title>QuickNote PWA</title>
 </head>
 <body>
-  <div class="container">
-    <h1>QuickNote</h1>
-    <div id="notes-container"></div>
-    <button id="refresh-btn">Refresh Notes</button>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Projects</h2>
+      <ul class="project-list">
+        <li>Books</li>
+        <li>Podcasts</li>
+        <li>Ideas</li>
+        <li>Others</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="welcome">
+        <h1>Hi, User!</h1>
+        <p>Welcome back! Ready to take some notes?</p>
+      </div>
+      <div class="note-prompt">
+        <textarea id="new-note" placeholder="Write a new note here..." rows="4"></textarea>
+        <button id="add-note-btn">Add Note</button>
+      </div>
+      <div id="notes-container" class="notes-container"></div>
+    </main>
   </div>
   <script src="app.js"></script>
 </body>
 </html>
+
 
