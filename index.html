@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
   <title>QuickNote PWA</title>
@@ -13,17 +13,17 @@
     <aside class="sidebar">
       <h2>Projects</h2>
       <ul class="project-list">
-        <li>Books</li>
-        <li>Podcasts</li>
-        <li>Ideas</li>
-        <li>Others</li>
+        <li data-project="Books">Books</li>
+        <li data-project="Podcasts">Podcasts</li>
+        <li data-project="Ideas">Ideas</li>
+        <li data-project="Others">Others</li>
       </ul>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
       <div class="welcome">
-        <h1>Hi, User!</h1>
+        <h1>Hi, <span id="username">User</span>!</h1>
         <p>Welcome back! Ready to take some notes?</p>
       </div>
       <div class="note-prompt">
@@ -33,6 +33,7 @@
       <div id="notes-container" class="notes-container"></div>
     </main>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
